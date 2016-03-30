@@ -13,10 +13,10 @@ import (
 )
 
 const (
-	xpid    = "pkg00@PASSPORT3496.Rovi"
-	custid  = "passport"
-	rpr     = "10"
-	ectJson = "5"
+	xpid   = "pkg00@PASSPORT3496.Rovi"
+	custid = "passport"
+	rpr    = "10"
+	//	ectJson = "5"
 	baseUrl = "http://roviapi.veveo.net/search"
 )
 
@@ -28,7 +28,7 @@ func init() {
 	params["XPID"] = xpid
 	params["custid"] = custid
 	params["RPR"] = rpr
-	params["ECT"] = ectJson
+	//params["ECT"] = ectJson
 	//map["W"] = ""
 }
 
@@ -78,7 +78,46 @@ func (s ShortEventDescriptorType) String() string {
 	return fmt.Sprintf("%s", s.Title)
 }
 
-// GGuide SI BSD XML struct here -------
+// GGuide SI BSD XML struct ends -------
+
+// Veveo Response XML Structure here -------
+
+// Top node = VtvRsps
+type VeveoResponse struct {
+	RC RCType
+}
+
+type RCType struct {
+	CNs CNsType
+}
+
+type CNsType struct {
+	N  int `xml:"n"`
+	CI []CIType
+}
+
+type CIType struct {
+	T      string
+	G      string     `xml:"G",omitempty`
+	TYP    string     `xml:"TYP",omitempty`
+	ZL     string     `xml:"ZL",omitempty`
+	Mtinfo MTinfoType `xml:"mtinfo",omitempty`
+}
+
+type MTinfoType struct {
+	Mt   string `xml:"mt"`
+	Mtfn string `xml:"mtfn"`
+}
+
+func (ci CIType) String() string {
+	return fmt.Sprintf("T [%s] - G [%s] - TYP [%s] - ZL [%s] mtinfo[%s]", ci.T, ci.G, ci.TYP, ci.ZL, ci.Mtinfo)
+}
+
+func (mtinfo MTinfoType) String() string {
+	return fmt.Sprintf("mt [%s] - mtfn [%s]", mtinfo.Mt, mtinfo.Mtfn)
+}
+
+// Veveo Response XML Structure ends -------
 
 // Search ------------
 func searchTerm() (searchString string) {
@@ -108,7 +147,7 @@ func getUrl(searchTerm string) string {
 	return Url.String()
 }
 
-func search(searchterm string) {
+func search(searchterm string) string {
 
 	url := getUrl(searchterm)
 	response, err := http.Get(url)
@@ -129,7 +168,10 @@ func search(searchterm string) {
 		fmt.Println("--------------------begin---------------------------")
 		fmt.Printf("%s\n", string(contents))
 		fmt.Println("---------------------end----------------------------")
+
+		return string(contents)
 	}
+	return ""
 }
 
 // Get the list of all XML files in the provided folder
@@ -146,7 +188,7 @@ func getXmlSIFiles(searchDir string) []string {
 	return fileList
 }
 
-// Loads an XML file, gets the list of titles
+// Loads the GGuide SI XML file, gets the list of titles
 func loadXmlFile(filename string) []string {
 	titleList := []string{}
 
@@ -165,9 +207,33 @@ func loadXmlFile(filename string) []string {
 	fmt.Println("Channel ID: ", q.GemstarChannelID)
 	for _, listing := range q.ListingsList {
 		fmt.Printf("\t%s\n", listing)
-		titleList = append(titleList, listing.ShortEventDescriptor.Title)
+		if listing.ShortEventDescriptor.Title != "" {
+			titleList = append(titleList, listing.ShortEventDescriptor.Title)
+		}
 	}
 	return titleList
+}
+
+// Analise if we get any search results back
+func analyseResults(title, responseXmlString string) {
+	var responseXML VeveoResponse
+
+	fmt.Println("Loading/unmarshalling Veveo response XML...")
+	err := xml.Unmarshal([]byte(responseXmlString), &responseXML)
+	if err != nil {
+		fmt.Printf("Error unmarshalling Veveo response for: [%s], error: [%s]\n", title, err)
+	}
+
+	if responseXML.RC.CNs.N == 1 {
+		if responseXML.RC.CNs.CI[0].T == "No Results" {
+			fmt.Println("No results for ", title)
+		}
+	} else {
+		fmt.Printf("Found [%d] results:", responseXML.RC.CNs.N)
+		for _, ci := range responseXML.RC.CNs.CI {
+			fmt.Printf("Found [%s] for [%s]\n", ci.Mtinfo.Mt, title)
+		}
+	}
 }
 
 // Main loop to process files
@@ -186,12 +252,13 @@ func main() {
 		// Get the list of titles in nodes xpath='/ListingGroup/Listing[...]/short_event_descriptor/Title'
 		titles := loadXmlFile(file)
 
+		fmt.Println("Searching Veveo for the titles...")
 		// For each title
 		for _, title := range titles {
 			// do search
-			search(title)
+			searchResponseXmlString := search(title)
 			// for each search result
-
+			analyseResults(title, searchResponseXmlString)
 			// check the nodes xpath='/VtvRsps/RC/CNs/CI[nn]/mtinfo'
 			// where <mtfn>Title</mtfn> == 'Title'
 			// and <mt><![CDATA[ワンチョ -<em>伝</em>説の英雄-]]></mt> matches the original search term
