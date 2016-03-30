@@ -229,7 +229,7 @@ func analyseResults(title, responseXmlString string) {
 			fmt.Println("No results for ", title)
 		}
 	} else {
-		fmt.Printf("Found [%d] results:", responseXML.RC.CNs.N)
+		fmt.Printf("Got [%d] results:\n", responseXML.RC.CNs.N)
 		for _, ci := range responseXML.RC.CNs.CI {
 			fmt.Printf("Found [%s] for [%s]\n", ci.Mtinfo.Mt, title)
 		}
