@@ -1,6 +1,6 @@
 # veveojapanesechecker
 
-on prompt enter the folder name for GGuide XML files
+On the app's prompt enter the folder name for GGuide XML files
 the app will:
 
   Process each XML file:
