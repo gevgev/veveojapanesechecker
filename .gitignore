@@ -2,4 +2,6 @@ veveojapanesechecker
 *.json
 *.xml
 *.out
+*.zip
+*.exe
 
