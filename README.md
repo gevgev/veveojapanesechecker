@@ -1,7 +1,8 @@
 # veveojapanesechecker
 
-enter folder name for GGuide XML files
-will:
+on prompt enter the folder name for GGuide XML files
+the app will:
+
   Process each XML file:
     extract the list of titles
       for each title in the list

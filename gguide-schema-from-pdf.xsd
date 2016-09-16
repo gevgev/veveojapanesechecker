@@ -1,0 +1,346 @@
+<?xml version="1.0" encoding="utf-8"?>
+<xs:schema id="NewDataSet" xmlns="" xmlns:xs="http://www.w3.org/2001/XMLSchema" xmlns:msdata="urn:schemas-microsoft-com:xml-msdata">
+  <xs:element name="ListingGroup">
+   <xs:complexType>
+<xs:sequence>
+<xs:element name="MediaID" type="xs:string" minOccurs="0" />
+<xs:element name="xGCN" type="xs:string" minOccurs="0" />
+<xs:element name="GemstarDataSourceID" type="xs:string" minOccurs="0" /> <xs:element name="GemstarChannelID" type="xs:string" minOccurs="0" /> <xs:element name="DigitalServiceID" minOccurs="0" maxOccurs="1">
+        <xs:complexType>
+          <xs:sequence>
+            <xs:element name="NetworkID" type="xs:string" minOccurs="0" />
+            <xs:element name="ServiceID" type="xs:string" minOccurs="0" />
+            <xs:element name="ServiceType" type="xs:string" minOccurs="0" />
+          </xs:sequence>
+        </xs:complexType>
+       </xs:element>
+       <xs:element name="Listing" minOccurs="0" maxOccurs="unbounded">
+        <xs:complexType>
+          <xs:sequence>
+<xs:element name="ProgramID" type="xs:string" minOccurs="0" /> <xs:element name="Date" type="xs:string" minOccurs="0" />
+<xs:element name="StartTimeInHHMM" type="xs:string" minOccurs="0" /> <xs:element name="DurInHHMM" type="xs:string" minOccurs="0" /> <xs:element name="Title" type="xs:string" minOccurs="0" />
+<xs:element name="L1detail" type="xs:string" minOccurs="0" /> <xs:element name="L2detail" type="xs:string" minOccurs="0" /> <xs:element name="xGemstarGenreCode" type="xs:string" minOccurs="0" /> <xs:element name="Features" minOccurs="0" maxOccurs="1">
+<!-- ￼Gemstar Multimedia Ltd. Confidential Page 14 of 24
+SGG 番組情報配信 API 仕様書
+r1.0(5)
+￼￼￼￼￼ -->
+<xs:complexType>
+   <xs:sequence>
+     <xs:element name="IsStereo" type="xs:long" minOccurs="0" />
+     <xs:element name="IsBilingual" type="xs:long" minOccurs="0" />
+     <xs:element name="IsCaptioning" type="xs:long" minOccurs="0" />
+     <xs:element name="IsWideScreen" type="xs:long" minOccurs="0" />
+     <xs:element name="IsPremiere" type="xs:long" minOccurs="0" />
+     <xs:element name="IsRerun" type="xs:long" minOccurs="0" />
+     <xs:element name="IsFinale" type="xs:long" minOccurs="0" />
+     <xs:element name="IsSignLanguage" type="xs:long" minOccurs="0" />
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="ExtendedFeatures" minOccurs="0" maxOccurs="1">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="IsTeletext" type="xs:long" minOccurs="0" />
+     <xs:element name="IsSoundMultiplex" type="xs:long" minOccurs="0" />
+   </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="AdditionalGenreList" minOccurs="0" maxOccurs="1">
+  <xs:complexType>
+   <xs:sequence>
+<xs:element name="GenreCode" nillable="true" minOccurs="0" maxOccurs="unbounded"> <xs:complexType>
+<xs:simpleContent msdata:ColumnName="GenreCode_Text" msdata:Ordinal="0"> <xs:extension base="xs:string">
+</xs:extension>
+        </xs:simpleContent>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="IconList" minOccurs="0" maxOccurs="1">
+  <xs:complexType>
+   <xs:sequence>
+<xs:element name="IconID" nillable="true" minOccurs="0" maxOccurs="unbounded"> <xs:complexType>
+<xs:simpleContent msdata:ColumnName="IconID_Text" msdata:Ordinal="0"> <xs:extension base="xs:string">
+</xs:extension>
+        </xs:simpleContent>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="content_descriptor" minOccurs="0" maxOccurs="1">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="Nibble" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+<xs:sequence>
+<xs:element name="ContentInfoSequence" type="xs:long" minOccurs="0" /> <xs:element name="ContentNibble" type="xs:long" minOccurs="0" />
+<!-- ￼￼￼Gemstar Multimedia Ltd. Confidential
+Page 15 of 24
+
+SGG 番組情報配信 API 仕様書
+r1.0(5)
+￼￼￼￼￼   -->       
+<xs:element name="UserNibble" type="xs:long" minOccurs="0" />
+        </xs:sequence>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="parental_rating_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="xCountryCode" type="xs:string" minOccurs="0" />
+     <xs:element name="xParentalRate" type="xs:string" minOccurs="0" />
+   </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="short_event_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="xNetworkID" type="xs:string" minOccurs="0" />
+     <xs:element name="StartSecond" type="xs:long" minOccurs="0" />
+     <xs:element name="Duration" type="xs:long" minOccurs="0" />
+     <xs:element name="TextLength" type="xs:long" minOccurs="0" />
+     <xs:element name="TextCheckSum" type="xs:long" minOccurs="0" />
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="event_group_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="xGroupType" type="xs:string" minOccurs="0" />
+     <xs:element name="GroupCount" type="xs:long" minOccurs="0" />
+     <xs:element name="Group" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+          <xs:element name="ServiceID" type="xs:long" minOccurs="0" />
+          <xs:element name="EventID" type="xs:long" minOccurs="0" />
+        </xs:sequence>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="component_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="xComponentTag" type="xs:string" minOccurs="0" />
+     <xs:element name="xComponentType" type="xs:string" minOccurs="0" />
+     <xs:element name="Text" type="xs:string" minOccurs="0" />
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="audio_component_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="ComponentIndex" type="xs:long" minOccurs="0" />
+     <xs:element name="xComponentTag" type="xs:string" minOccurs="0" />
+     <xs:element name="xComponentType" type="xs:string" minOccurs="0" />
+<!--￼￼￼Gemstar Multimedia Ltd. Confidential
+Page 16 of 24
+
+SGG 番組情報配信 API 仕様書
+r1.0(5)
+￼￼￼￼￼ -->
+<xs:element name="xSimulcastGroupTag" type="xs:string" minOccurs="0" /> <xs:element name="QualityIndicator" type="xs:long" minOccurs="0" /> <xs:element name="SamplingRate" type="xs:long" minOccurs="0" />
+<xs:element name="xSubChannelFlag" type="xs:string" minOccurs="0" /> <xs:element name="xMainChannelFlag" type="xs:string" minOccurs="0" /> <xs:element name="xSubChannelLanguageCode" type="xs:string" minOccurs="0" /> <xs:element name="xMainChannelLanguageCode" type="xs:string" minOccurs="0" /> <xs:element name="Text" type="xs:string" minOccurs="0" />
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="digital_copy_control_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+<xs:element name="MaxBitRateFlag" type="xs:long" minOccurs="0" />
+<xs:element name="DigitalRecordingControlData" type="xs:long" minOccurs="0" /> <xs:element name="CopyControlType" type="xs:long" minOccurs="0" />
+<xs:element name="ASPControlData" type="xs:long" minOccurs="0" />
+<xs:element name="xMaxBitRate" type="xs:string" minOccurs="0" />
+<xs:element name="ControlInfo" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+<xs:element name="xComponentTag" type="xs:string" minOccurs="0" />
+<xs:element name="MaxBitRateFlag" type="xs:long" minOccurs="0" />
+<xs:element name="DigitalRecordingControlData" type="xs:long" minOccurs="0" /> <xs:element name="CopyControlType" type="xs:long" minOccurs="0" />
+<xs:element name="ASPControlData" type="xs:long" minOccurs="0" />
+<xs:element name="xMaxBitRate" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CA_contract_info_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+<xs:element name="FreeCAMode" type="xs:long" minOccurs="0" /> <xs:element name="CBCountFlag" type="xs:long" minOccurs="0" /> <xs:element name="xCASystemID" type="xs:string" minOccurs="0" /> <xs:element name="xCAUnitID" type="xs:string" minOccurs="0" /> <xs:element name="ComponentCount" type="xs:long" minOccurs="0" /> <xs:element name="ComponentTagList" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+<xs:element ref="xComponentTag" minOccurs="0" maxOccurs="unbounded" /> </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="xContractVerification" type="xs:string" minOccurs="0" /> <xs:element name="FeeName" type="xs:string" minOccurs="0" />
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+<xs:element name="component_group_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+<!--￼￼￼Gemstar Multimedia Ltd. Confidential
+Page 17 of 24
+
+SGG 番組情報配信 API 仕様書
+r1.0(5)
+￼￼￼￼￼ -->
+<xs:element name="ComponentGroupType" type="xs:long" minOccurs="0" /> <xs:element name="TotalBitRateFlag" type="xs:long" minOccurs="0" /> <xs:element name="xGroupID" type="xs:string" minOccurs="0" /> <xs:element name="CAUnitCount" type="xs:long" minOccurs="0" /> <xs:element name="xTotalBitRate" type="xs:string" minOccurs="0" /> <xs:element name="Text" type="xs:string" minOccurs="0" />
+     <xs:element name="CAUnit" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+<xs:sequence>
+<xs:element name="xCAUnitID" type="xs:string" minOccurs="0" /> <xs:element ref="xComponentTag" minOccurs="0" maxOccurs="unbounded" />
+        </xs:sequence>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="data_content_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+<xs:element name="xComponentSequence" type="xs:string" minOccurs="0" /> <xs:element name="xComponentID" type="xs:string" minOccurs="0" /> <xs:element name="FormatID" type="xs:long" minOccurs="0" />
+<xs:element name="xEntryComponent" type="xs:string" minOccurs="0" /> <xs:element name="ContentTitle" type="xs:string" minOccurs="0" /> <xs:element name="xDocumentResolution" type="xs:string" minOccurs="0" /> <xs:element name="xFlag" type="xs:string" minOccurs="0" />
+<xs:element name="xLanguageCode" type="xs:string" minOccurs="0" /> <xs:element name="xContentID" type="xs:string" minOccurs="0" />
+<xs:element name="xContentVer" type="xs:string" minOccurs="0" />
+<xs:element name="xBMLMajorVer" type="xs:string" minOccurs="0" />
+<xs:element name="xBMLMinorVer" type="xs:string" minOccurs="0" />
+<xs:element name="xComponentReferenceCount" type="xs:string" minOccurs="0" /> <xs:element name="xTransmissionFormat" type="xs:string" minOccurs="0" /> <xs:element name="xISO639LanguageCode" type="xs:string" minOccurs="0" /> <xs:element name="xAutoStartFlag" type="xs:string" minOccurs="0" /> <xs:element name="xUseXMLFlag" type="xs:string" minOccurs="0" />
+<xs:element name="xUpdateFlag" type="xs:string" minOccurs="0" />
+<xs:element name="xBXMLMajorVer" type="xs:string" minOccurs="0" />
+<xs:element name="xBXMLMinorVer" type="xs:string" minOccurs="0" />
+<xs:element name="ComponentReferenceList" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+<xs:element name="xComponentReference" nillable="true" minOccurs="0" maxOccurs="unbounded"> <xs:complexType>
+<xs:simpleContent msdata:ColumnName="xComponentReference_Text" msdata:Ordinal="0"> <xs:extension base="xs:string">
+</xs:extension>
+             </xs:simpleContent>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="CaptionInfo" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+<!-- ￼￼￼Gemstar Multimedia Ltd. Confidential
+Page 18 of 24
+
+SGG 番組情報配信 API 仕様書
+r1.0(5)
+￼￼￼￼￼ -->         
+<xs:element name="xLanguageTag" type="xs:string" minOccurs="0" />
+          <xs:element name="xDMF" type="xs:string" minOccurs="0" />
+          <xs:element name="xLanguageCode" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+       </xs:complexType>
+</xs:element>
+<xs:element name="CarouselInfo" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+<xs:element name="xComponentTag" type="xs:string" minOccurs="0" />
+<xs:element name="xFlag" type="xs:string" minOccurs="0" />
+<xs:element name="xComponentSize" type="xs:string" minOccurs="0" />
+<xs:element name="xTimeoutValueDII" type="xs:string" minOccurs="0" />
+<xs:element name="xDataEventFlag" type="xs:string" minOccurs="0" />
+<xs:element name="xModuleFlag" type="xs:string" minOccurs="0" />
+<xs:element name="xResourceFlag" type="xs:string" minOccurs="0" />
+<xs:element name="xCompressedComponentSizeFlag" type="xs:string" minOccurs="0" /> <xs:element name="xEventSectionFlag" type="xs:string" minOccurs="0" /> <xs:element name="xDefaultTransactionFlag" type="xs:string" minOccurs="0" /> <xs:element name="xDefaultLeakRateFlag" type="xs:string" minOccurs="0" /> <xs:element name="xDataEvent" type="xs:string" minOccurs="0" />
+<xs:element name="xModule" type="xs:string" minOccurs="0" />
+<xs:element name="xResource" type="xs:string" minOccurs="0" />
+<xs:element name="xCompressedComponentSize" type="xs:string" minOccurs="0" /> <xs:element name="xTransactionID" type="xs:string" minOccurs="0" /> <xs:element name="xLeakRate" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="LDT_linkage_descriptor" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+<xs:element name="xOriginalServiceID" type="xs:string" minOccurs="0" /> <xs:element name="xTransportStreamID" type="xs:string" minOccurs="0" /> <xs:element name="xOriginalNetworkID" type="xs:string" minOccurs="0" /> <xs:element name="LDTLinkage" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+<xs:element name="xDescriptionID" type="xs:string" minOccurs="0" /> <xs:element name="xDescriptionType" type="xs:string" minOccurs="0" /> <xs:element name="xLDTSectionNumber" type="xs:string" minOccurs="0" />
+        </xs:sequence>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="event_group_descriptorEx" minOccurs="0" maxOccurs="unbounded">
+  <xs:complexType>
+   <xs:sequence>
+     <xs:element name="EventGroupType" type="xs:string" minOccurs="0" />
+     <xs:element name="EventInfo" minOccurs="0" maxOccurs="unbounded">
+       <xs:complexType>
+        <xs:sequence>
+<!--￼￼￼Gemstar Multimedia Ltd. Confidential
+Page 19 of 24
+
+SGG 番組情報配信 API 仕様書
+r1.0(5)
+￼￼￼￼￼ -->
+<xs:element name="xOriginalNetworkID" type="xs:string" minOccurs="0" /> <xs:element name="xTransportStreamID" type="xs:string" minOccurs="0" /> <xs:element name="xServiceID" type="xs:string" minOccurs="0" /> <xs:element name="xEventID" type="xs:string" minOccurs="0" />
+                  </xs:sequence>
+                 </xs:complexType>
+               </xs:element>
+             </xs:sequence>
+</xs:complexType>
+</xs:element>
+<xs:element name="extended_event_descriptor" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+             <xs:sequence>
+<xs:element name="BasicEITVersion" type="xs:long" minOccurs="0" /> <xs:element name="BasicEITDate" type="xs:string" minOccurs="0" /> <xs:element name="BasicEITTime" type="xs:string" minOccurs="0" /> <xs:element name="xBasicCRC32" type="xs:string" minOccurs="0" /> <xs:element name="ExtendedEITVersion" type="xs:long" minOccurs="0" /> <xs:element name="ExtendedEITDate" type="xs:string" minOccurs="0" /> <xs:element name="ExtendedEITTime" type="xs:string" minOccurs="0" /> <xs:element name="xExtendedCRC32" type="xs:string" minOccurs="0" /> <xs:element name="TitleLengthInBytes" type="xs:long" minOccurs="0" /> <xs:element name="TitleTextCRC" type="xs:long" minOccurs="0" /> <xs:element name="L1TextLengthInBytes" type="xs:long" minOccurs="0" /> <xs:element name="L1TextCRC" type="xs:long" minOccurs="0" /> <xs:element name="L2TextLengthInBytes" type="xs:long" minOccurs="0" /> <xs:element name="L2TextCRC" type="xs:long" minOccurs="0" />
+             </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+          <xs:element name="SeriesInfo" minOccurs="0" maxOccurs="unbounded">
+            <xs:complexType>
+             <xs:sequence>
+               <xs:element name="Rerun" type="xs:long" minOccurs="0" />
+               <xs:element name="PatternFlag" type="xs:long" minOccurs="0" />
+               <xs:element name="PatternBitMask" type="xs:long" minOccurs="0" />
+               <xs:element name="SeriesID" type="xs:long" minOccurs="0" />
+               <xs:element name="SeriesName" type="xs:string" minOccurs="0" />
+               <xs:element name="TotalEpisode" type="xs:long" minOccurs="0" />
+               <xs:element name="Expiry" type="xs:string" minOccurs="0" />
+             </xs:sequence>
+            </xs:complexType>
+          </xs:element>
+        </xs:sequence>
+       </xs:complexType>
+     </xs:element>
+   </xs:sequence>
+  </xs:complexType>
+</xs:element>
+  <xs:element name="xComponentTag" nillable="true">
+  <xs:complexType>
+<xs:simpleContent msdata:ColumnName="xComponentTag_Text" msdata:Ordinal="0"> <xs:extension base="xs:string">
+</xs:extension>
+   </xs:simpleContent>
+  </xs:complexType>
+</xs:element>
+<!-- ￼￼￼Gemstar Multimedia Ltd. Confidential
+Page 20 of 24
+
+SGG 番組情報配信 API 仕様書 r1.0(5)
+￼
+￼ -->
+<xs:element name="NewDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true"> <xs:complexType>
+     <xs:choice minOccurs="0" maxOccurs="unbounded">
+       <xs:element ref="xComponentTag" />
+       <xs:element ref="ListingGroup" />
+     </xs:choice>
+   </xs:complexType>
+  </xs:element>
+</xs:schema>
